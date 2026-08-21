@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@import "@heroui/styles"; 
+
+@layer base {
+  /* ☀️ Light Mode Design  */
+  
+  :root {
+    --bg-page: #F4FAFB;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #E6F5F7;
+
+    --txt-primary: #003135;
+    --txt-secondary: #024950;
+    --txt-muted: #6B8B8E;
+
+    --border-line: #B8DDE2;
+    --border-active: #0FA4AF;
+
+    --brand-primary: #0FA4AF;
+    --brand-hover: #024950;
+    --accent-terracotta: #964734;
+
+    --status-error: #D9383A;
+    --status-success: #0FA4AF;
+  }
+
+  /* 🌙 Dark Mode Design  */
+  .dark {
+    --bg-page: #003135;
+    --bg-surface: #024950;
+    --bg-subtle: #065B63;
+
+    --txt-primary: #F2FBFC;
+    --txt-secondary: #AFDDE5;
+    --txt-muted: #629096;
+
+    --border-line: #286067;
+    --border-active: #0FA4AF;
+
+    --brand-primary: #0FA4AF;
+    --brand-hover: #0C8F99;
+    --accent-terracotta: #964734;
+
+    --status-error: #E55355;
+    --status-success: #0FA4AF;
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--txt-primary);
+    font-family: inherit;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+}
