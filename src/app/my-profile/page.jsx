@@ -4,9 +4,9 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Loader2 } from 'lucide-react';
 import { useSession } from '@/lib/auth-client';
-import ProfileHeader from '@/components/profile/ProfileHeader';
-import StatsOverview from '@/components/profile/StatsOverview';
-import UserIdeasSection from '@/components/profile/UserIdeasSection';
+import ProfileHeader from '@/components/Profile/ProfileHeader';
+import StatsOverview from '@/components/Profile/StatsOverview';
+import UserIdeasSection from '@/components/Profile/UserIdeasSection';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
