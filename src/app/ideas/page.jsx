@@ -94,20 +94,20 @@ export default function IdeasPage() {
   return (
     <main className="min-h-screen py-12 px-4 max-w-7xl mx-auto">
       <div className="text-center max-w-2xl mx-auto mb-10">
-        <h1 className="text-4xl font-extrabold text-slate-900 mb-3">Explore Startup Ideas</h1>
-        <p className="text-slate-600 text-sm">Discover validated business concepts and early stage projects.</p>
+        <h1 className="text-4xl font-extrabold text-txt-primary mb-3">Explore Startup Ideas</h1>
+        <p className="text-txt-secondary text-sm">Discover validated business concepts and early stage projects.</p>
       </div>
 
       {/* Search & Filter Bar */}
       <div className="flex flex-col md:flex-row gap-4 mb-8 justify-between items-center">
         <div className="relative w-full md:w-96">
-          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-txt-muted" />
           <input
             type="text"
             placeholder="Search by title or tags..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-teal-900/10 bg-white text-sm focus:outline-none focus:border-teal-500"
+            className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-border-line bg-bg-surface text-txt-primary placeholder:text-txt-muted text-sm focus:outline-none focus:border-border-active"
           />
         </div>
 
@@ -118,8 +118,8 @@ export default function IdeasPage() {
               onClick={() => setSelectedCategory(cat)}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
                 selectedCategory === cat
-                  ? 'bg-teal-600 text-white'
-                  : 'bg-white text-slate-600 border border-teal-900/10 hover:bg-teal-50'
+                  ? 'bg-brand-primary text-white'
+                  : 'bg-bg-surface text-txt-secondary border border-border-line hover:bg-bg-subtle'
               }`}
             >
               {cat}
@@ -131,10 +131,10 @@ export default function IdeasPage() {
       {/* Ideas Grid */}
       {loading ? (
         <div className="flex justify-center items-center py-20">
-          <Loader2 className="w-8 h-8 animate-spin text-teal-600" />
+          <Loader2 className="w-8 h-8 animate-spin text-brand-primary" />
         </div>
       ) : filteredIdeas.length === 0 ? (
-        <div className="text-center py-16 bg-white rounded-2xl border border-teal-900/10 text-slate-500">
+        <div className="text-center py-16 bg-bg-surface rounded-2xl border border-border-line text-txt-muted">
           No ideas found matching your criteria.
         </div>
       ) : (
@@ -146,12 +146,12 @@ export default function IdeasPage() {
             return (
               <div
                 key={idea._id}
-                className="p-6 rounded-2xl bg-white border border-teal-900/10 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+                className="p-6 rounded-2xl bg-bg-surface border border-border-line hover:border-border-active shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex justify-between items-center mb-3">
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-medium">
-                      <Tag className="w-3 h-3" /> {idea.category || 'General'}
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-bg-subtle text-txt-secondary border border-border-line text-xs font-medium">
+                      <Tag className="w-3 h-3 text-brand-primary" /> {idea.category || 'General'}
                     </span>
 
                     {/* Upvote & Bookmark Quick Action Buttons */}
@@ -160,8 +160,8 @@ export default function IdeasPage() {
                         onClick={() => handleInteraction(idea._id, 'upvoted')}
                         className={`p-1.5 rounded-lg border transition-all ${
                           hasUpvoted
-                            ? 'bg-teal-600 text-white border-teal-600'
-                            : 'border-slate-200 text-slate-500 hover:border-teal-500 hover:text-teal-600'
+                            ? 'bg-brand-primary text-white border-brand-primary'
+                            : 'border-border-line text-txt-muted hover:border-border-active hover:text-brand-primary bg-bg-surface'
                         }`}
                         title="Upvote"
                       >
@@ -172,8 +172,8 @@ export default function IdeasPage() {
                         onClick={() => handleInteraction(idea._id, 'bookmarks')}
                         className={`p-1.5 rounded-lg border transition-all ${
                           hasBookmarked
-                            ? 'bg-amber-500 text-white border-amber-500'
-                            : 'border-slate-200 text-slate-500 hover:border-amber-500 hover:text-amber-600'
+                            ? 'bg-accent-terracotta text-white border-accent-terracotta'
+                            : 'border-border-line text-txt-muted hover:border-accent-terracotta hover:text-accent-terracotta bg-bg-surface'
                         }`}
                         title="Bookmark"
                       >
@@ -182,17 +182,17 @@ export default function IdeasPage() {
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">{idea.title}</h3>
-                  <p className="text-slate-600 text-sm line-clamp-2 mb-4">
+                  <h3 className="text-xl font-bold text-txt-primary mb-2">{idea.title}</h3>
+                  <p className="text-txt-secondary text-sm line-clamp-2 mb-4">
                     {idea.shortDescription || idea.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
-                  <span className="text-slate-500">By {idea.authorName || 'Anonymous'}</span>
+                <div className="pt-4 border-t border-border-line flex items-center justify-between text-xs">
+                  <span className="text-txt-muted">By {idea.authorName || 'Anonymous'}</span>
                   <Link
                     href={`/ideas/${idea._id}`}
-                    className="font-semibold text-teal-600 hover:text-teal-700 flex items-center gap-1"
+                    className="font-semibold text-brand-primary hover:text-brand-hover flex items-center gap-1 transition-colors"
                   >
                     View Details <ArrowRight className="w-3.5 h-3.5" />
                   </Link>

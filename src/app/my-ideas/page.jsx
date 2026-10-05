@@ -164,33 +164,33 @@ const MyIdeasPage = () => {
     }
   };
 
-  // Loading
+  // Main Loading
   if (sessionLoading && loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-teal-600" />
+      <div className="flex min-h-screen items-center justify-center bg-bg-base">
+        <Loader2 className="h-8 w-8 animate-spin text-brand-primary" />
       </div>
     );
   }
 
   return (
     <>
-      <main className="min-h-screen px-4 py-12 sm:px-6 lg:px-8">
+      <main className="min-h-screen bg-bg-base px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
 
           {/* Header */}
           <div className="mb-8 flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
             <div>
-              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-teal-100 bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700">
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-border-line bg-bg-subtle px-3 py-1 text-xs font-semibold text-brand-primary">
                 <Lightbulb className="h-3.5 w-3.5" />
                 Your Contributions
               </div>
 
-              <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+              <h1 className="text-3xl font-extrabold tracking-tight text-txt-primary sm:text-4xl">
                 My Startup Ideas
               </h1>
 
-              <p className="mt-2 max-w-xl text-sm leading-6 text-slate-500">
+              <p className="mt-2 max-w-xl text-sm leading-6 text-txt-secondary">
                 Manage your ideas, review your concepts, and keep
                 building something meaningful.
               </p>
@@ -198,7 +198,7 @@ const MyIdeasPage = () => {
 
             <Link
               href="/add-idea"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-700"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-primary px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-hover"
             >
               <Plus className="h-4 w-4" />
               Add New Idea
@@ -207,54 +207,54 @@ const MyIdeasPage = () => {
 
           {/* Error */}
           {error && (
-            <div className="mb-6 flex items-center gap-3 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-600">
+            <div className="mb-6 flex items-center gap-3 rounded-2xl border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-500">
               <AlertCircle className="h-5 w-5 shrink-0" />
               <span>{error}</span>
             </div>
           )}
 
-          {/* Loading */}
+          {/* Card Loading / Empty / Content */}
           {loading ? (
-            <div className="flex min-h-64 items-center justify-center rounded-3xl border border-slate-200 bg-white">
+            <div className="flex min-h-64 items-center justify-center rounded-3xl border border-border-line bg-bg-surface">
               <div className="flex flex-col items-center gap-3">
-                <Loader2 className="h-7 w-7 animate-spin text-teal-600" />
-                <p className="text-sm text-slate-400">
+                <Loader2 className="h-7 w-7 animate-spin text-brand-primary" />
+                <p className="text-sm text-txt-muted">
                   Loading your ideas...
                 </p>
               </div>
             </div>
           ) : !userEmail ? (
             /* Not logged in */
-            <div className="rounded-3xl border border-slate-200 bg-white px-6 py-16 text-center shadow-sm">
-              <Lightbulb className="mx-auto mb-4 h-10 w-10 text-slate-300" />
+            <div className="rounded-3xl border border-border-line bg-bg-surface px-6 py-16 text-center shadow-sm">
+              <Lightbulb className="mx-auto mb-4 h-10 w-10 text-txt-muted" />
 
-              <h2 className="font-bold text-slate-800">
+              <h2 className="font-bold text-txt-primary">
                 Sign in to view your ideas
               </h2>
 
-              <p className="mt-2 text-sm text-slate-500">
+              <p className="mt-2 text-sm text-txt-secondary">
                 Your submitted startup ideas will appear here.
               </p>
 
               <Link
                 href="/login"
-                className="mt-5 inline-flex text-sm font-semibold text-teal-600 hover:underline"
+                className="mt-5 inline-flex text-sm font-semibold text-brand-primary hover:underline"
               >
                 Go to Login
               </Link>
             </div>
           ) : ideas.length === 0 ? (
             /* Empty state */
-            <div className="rounded-3xl border border-dashed border-slate-200 bg-white px-6 py-16 text-center shadow-sm">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-teal-50 text-teal-600">
+            <div className="rounded-3xl border border-dashed border-border-line bg-bg-surface px-6 py-16 text-center shadow-sm">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-bg-subtle text-brand-primary border border-border-line">
                 <Lightbulb className="h-7 w-7" />
               </div>
 
-              <h2 className="mt-5 text-lg font-bold text-slate-800">
+              <h2 className="mt-5 text-lg font-bold text-txt-primary">
                 Your idea vault is empty
               </h2>
 
-              <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-500">
+              <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-txt-secondary">
                 You haven't shared a startup idea yet. Have a
                 concept in mind? Put it out there and let the
                 community discover it.
@@ -262,14 +262,14 @@ const MyIdeasPage = () => {
 
               <Link
                 href="/add-idea"
-                className="mt-6 inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-700"
+                className="mt-6 inline-flex items-center gap-2 rounded-xl bg-brand-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-hover"
               >
                 <Plus className="h-4 w-4" />
                 Create Your First Idea
               </Link>
             </div>
           ) : (
-            /* Ideas */
+            /* Ideas Table */
             <IdeaTable
               ideas={ideas}
               onDelete={handleDeleteClick}
