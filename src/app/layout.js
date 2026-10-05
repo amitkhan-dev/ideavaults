@@ -1,5 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar/Navbar";
+import { Toaster } from 'react-hot-toast';
+import { ThemeProvider } from 'next-themes'; // ✅ ১. ThemeProvider ইম্পোর্ট করুন
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,8 +24,16 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning // ✅ ২. Hydration Warning এড়াতে এটি যোগ করুন
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {/* ✅ ৩. ThemeProvider দিয়ে পুরো অ্যাপ র‍্যাপ করুন */}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Toaster position="top-center" reverseOrder={false} />
+          <Navbar />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

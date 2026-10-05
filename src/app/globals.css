@@ -1,9 +1,34 @@
 @import "tailwindcss";
 @import "@heroui/styles"; 
 
+/* ✅ Tailwind CSS v4 Dark Mode Selector Setup */
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-bg-page: var(--bg-page);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-subtle: var(--bg-subtle);
+
+  --color-txt-primary: var(--txt-primary);
+  --color-txt-secondary: var(--txt-secondary);
+  --color-txt-muted: var(--txt-muted);
+
+  --color-border-line: var(--border-line);
+  --color-border-active: var(--border-active);
+
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-hover: var(--brand-hover);
+  --color-accent-terracotta: var(--accent-terracotta);
+
+  --color-status-error: var(--status-error);
+  --color-status-success: var(--status-success);
+
+  --color-accent-pink: #ffc2d4;
+  --color-accent-pink-soft: #fff0f4;
+}
+
 @layer base {
-  /* ☀️ Light Mode Design  */
-  
+  /* ☀️ Light Mode Colors */
   :root {
     --bg-page: #F4FAFB;
     --bg-surface: #FFFFFF;
@@ -22,9 +47,11 @@
 
     --status-error: #D9383A;
     --status-success: #0FA4AF;
+
+    color-scheme: light;
   }
 
-  /* 🌙 Dark Mode Design  */
+  /* 🌙 Dark Mode Colors */
   .dark {
     --bg-page: #003135;
     --bg-surface: #024950;
@@ -43,8 +70,11 @@
 
     --status-error: #E55355;
     --status-success: #0FA4AF;
+
+    color-scheme: dark;
   }
 
+  /* Base Body Styling */
   body {
     background-color: var(--bg-page);
     color: var(--txt-primary);
